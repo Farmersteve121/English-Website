@@ -7,9 +7,15 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-mongoose.connect('mongodb://localhost:27017/english_learning')
-  .then(() => console.log('MongoDB connected'))
-  .catch(err => console.error('MongoDB connection error:', err));
+mongoose.connect('mongodb+srv://wangdejia1115_db_user:wy123789@english-website.wuv98z3.mongodb.net/?appName=English-Website', {
+  serverSelectionTimeoutMS: 30000,
+  socketTimeoutMS: 45000,
+})
+.then(() => console.log('✅ MongoDB connected successfully'))
+.catch(err => {
+  console.error('❌ MongoDB connection error:', err);
+  process.exit(1);
+});
 
 app.use('/api/auth', require('./routes/auth'));
 app.use('/api/words', require('./routes/words'));
