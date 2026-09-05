@@ -1,0 +1,227 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background: #f4f7fc;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #2c3e50;
+  padding: 1rem 2rem;
+  color: white;
+}
+
+.navbar .logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: white;
+  text-decoration: none;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.nav-links a {
+  color: white;
+  text-decoration: none;
+}
+
+.nav-links a:hover {
+  text-decoration: underline;
+}
+
+.nav-links .user-info {
+  background: #34495e;
+  padding: 0.2rem 0.8rem;
+  border-radius: 20px;
+  font-size: 0.9rem;
+}
+
+.nav-links button {
+  background: #e74c3c;
+  border: none;
+  color: white;
+  padding: 0.2rem 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+}
+
+.auth-form {
+  max-width: 400px;
+  margin: 2rem auto;
+  background: white;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.auth-form h2 {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.auth-form input,
+.auth-form select {
+  width: 100%;
+  padding: 0.8rem;
+  margin-bottom: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+.auth-form button {
+  width: 100%;
+  padding: 0.8rem;
+  background: #3498db;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.auth-form button:hover {
+  background: #2980b9;
+}
+
+.word-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.word-card {
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  padding: 1.5rem;
+  cursor: pointer;
+  transition: transform 0.2s;
+  min-height: 150px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.word-card:hover {
+  transform: scale(1.02);
+}
+
+.word-front .phonetic {
+  color: #7f8c8d;
+  font-size: 0.9rem;
+}
+
+.word-front .hint {
+  font-size: 0.8rem;
+  color: #bdc3c7;
+  margin-top: 1rem;
+}
+
+.word-back .part-of-speech {
+  color: #7f8c8d;
+  font-size: 0.9rem;
+}
+
+.word-back .example {
+  font-style: italic;
+  color: #555;
+  font-size: 0.9rem;
+  margin-top: 0.5rem;
+}
+
+.word-back button {
+  margin-top: 1rem;
+  background: #2ecc71;
+  border: none;
+  color: white;
+  padding: 0.3rem 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.text-list ul {
+  list-style: none;
+  padding: 0;
+}
+
+.text-list li {
+  background: white;
+  margin: 0.5rem 0;
+  padding: 0.8rem 1.2rem;
+  border-radius: 5px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+}
+
+.text-list li a {
+  text-decoration: none;
+  color: #2c3e50;
+  font-weight: bold;
+}
+
+.text-list li a:hover {
+  color: #3498db;
+}
+
+.text-reader {
+  background: white;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.audio-controls {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin: 1.5rem 0;
+}
+
+.audio-controls input[type="range"] {
+  flex: 1;
+}
+
+.text-content {
+  margin-top: 2rem;
+  line-height: 2;
+}
+
+.text-content p {
+  padding: 0.5rem;
+  border-radius: 4px;
+  transition: background 0.3s;
+}
+
+.text-content p.highlighted {
+  background: #f1c40f;
+}
+
+.text-content .translation {
+  color: #7f8c8d;
+  font-size: 0.9rem;
+  margin-left: 0.5rem;
+}
+
+.home {
+  text-align: center;
+  padding: 3rem;
+}
