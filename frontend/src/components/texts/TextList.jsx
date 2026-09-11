@@ -9,7 +9,7 @@ const TextList = () => {
   useEffect(() => {
     const fetchTexts = async () => {
       try {
-        const res = await axios.get('http://localhost:5000/api/texts');
+        const res = await axios.get('https://english-website-34q8.onrender.com/api/texts');
         setTexts(res.data);
       } catch (error) {
         console.error('获取课文失败:', error);

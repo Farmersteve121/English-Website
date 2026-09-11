@@ -17,10 +17,10 @@ const TextReader = () => {
   useEffect(() => {
     const fetchText = async () => {
       try {
-        const res = await axios.get(`http://localhost:5000/api/texts/${id}`);
+        const res = await axios.get(`https://english-website-34q8.onrender.com/texts/${id}`);
         setText(res.data);
         // 加载进度
-        const progressRes = await axios.get('http://localhost:5000/api/words/progress');
+        const progressRes = await axios.get('https://english-website-34q8.onrender.com/api/words/progress');
         const textProgress = progressRes.data.textProgress?.find(p => p.textId === id);
         if (textProgress && audioRef.current) {
           audioRef.current.currentTime = textProgress.currentPosition || 0;
@@ -56,7 +56,7 @@ const TextReader = () => {
   const saveProgress = async () => {
     if (!text) return;
     try {
-      await axios.post(`http://localhost:5000/api/texts/progress/${text._id}`, {
+      await axios.post(`https://english-website-34q8.onrender.com/api/texts/progress/${text._id}`, {
         position: audioRef.current?.currentTime || 0,
         completed: audioRef.current?.currentTime >= (audioRef.current?.duration || 0) - 1
       });

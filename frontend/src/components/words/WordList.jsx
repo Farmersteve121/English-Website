@@ -12,7 +12,7 @@ const WordList = () => {
 
   const fetchWords = async () => {
     try {
-      const res = await axios.get('http://localhost:5000/api/words');
+      const res = await axios.get('https://english-website-34q8.onrender.com/api/words');
       setWords(res.data);
     } catch (error) {
       console.error('获取单词失败:', error);
