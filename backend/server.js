@@ -1,32 +1,39 @@
-require('dotenv').config();
-const express = require('express');
-const mongoose = require('mongoose');
+// backend/server.js
 const cors = require('cors');
-const { initReminderService } = require('./services/reminder');
 
 const app = express();
-app.use(cors());
+
+// 明确允许的前端来源
+const allowedOrigins = [
+  'https://farmersteve121.github.io',
+  'http://localhost:5173' // 方便本地开发
+];
+
+app.use(cors({
+  origin: function (origin, callback) {
+    // 允许没有来源的请求（如 curl、Postman）或允许的来源
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
+  credentials: true, // 允许携带凭证（如 Cookie）
+  methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization']
+}));
+
+// 处理预检请求 (OPTIONS)
+app.options('*', cors());
+
+// 解析 JSON 请求体
 app.use(express.json());
 
-// 数据库连接（用环境变量；本地开发用 fallback）
-const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost:27017/memo_app';
-mongoose.connect(MONGODB_URI, {
-  serverSelectionTimeoutMS: 30000,
-  socketTimeoutMS: 45000,
-})
-  .then(() => console.log('✅ MongoDB connected'))
-  .catch(err => {
-    console.error('❌ MongoDB connection error:', err);
-    process.exit(1);
+// backend/server.js
+app.get('/', (req, res) => {
+  res.json({ 
+    status: 'ok', 
+    message: 'Memo App Backend is running',
+    timestamp: new Date().toISOString()
   });
-
-// 路由
-app.use('/api/auth', require('./routes/auth'));
-app.use('/api/memos', require('./routes/memos'));
-app.use('/api/push', require('./routes/push'));
-
-// 启动提醒服务
-initReminderService();
-
-const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+});
